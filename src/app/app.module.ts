@@ -13,6 +13,7 @@ import { MainLayoutComponent } from './shared/components/main-layout/main-layout
 import { SharedModule } from './shared/shared.module';
 import { ListPageComponent } from './posts/list-page/list-page.component';
 import { DetailPageComponent } from './posts/detail-page/detail-page.component';
+import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { DetailPageComponent } from './posts/detail-page/detail-page.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SharedModule
+    SharedModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

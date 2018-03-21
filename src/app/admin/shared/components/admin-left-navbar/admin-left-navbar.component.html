@@ -1,3 +1,30 @@
-<p>
-  admin-left-navbar works!
-</p>
+<nav class="">
+  <div class="sidebar-sticky">
+    <ul class="nav flex-column">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="admin/" routerLinkActive="active">
+          <fa-icon [icon]="faThLarge"></fa-icon>
+          Dashboard
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="admin/posts" routerLinkActive="active">
+          <fa-icon [icon]="faNewspaper"></fa-icon>
+          Posts
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="admin/portfolio" routerLinkActive="active">
+          <fa-icon [icon]="faCamera"></fa-icon>
+          Portfolio
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="admin/pages" routerLinkActive="active">
+          <fa-icon [icon]="faFile"></fa-icon>
+          Pages
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>

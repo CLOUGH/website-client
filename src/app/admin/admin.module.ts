@@ -6,11 +6,13 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { AdminLayoutComponent } from './shared/components/admin-layout/admin-layout.component';
 import { AdminTopNavbarComponent } from './shared/components/admin-top-navbar/admin-top-navbar.component';
 import { AdminLeftNavbarComponent } from './shared/components/admin-left-navbar/admin-left-navbar.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   imports: [
     CommonModule,
     AdminRoutingModule,
+    FontAwesomeModule
   ],
   declarations: [
     DashboardComponent,
