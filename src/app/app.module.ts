@@ -9,23 +9,24 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { MainNavbarComponent } from './shared/components/main-navbar/main-navbar.component';
 import { AboutPageComponent } from './about-page/about-page.component';
-import { PostsModule } from './posts/posts.module';
 import { MainLayoutComponent } from './shared/components/main-layout/main-layout.component';
+import { SharedModule } from './shared/shared.module';
+import { ListPageComponent } from './posts/list-page/list-page.component';
+import { DetailPageComponent } from './posts/detail-page/detail-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomePageComponent,
     LoginPageComponent,
-    MainNavbarComponent,
     AboutPageComponent,
-    MainLayoutComponent
+    ListPageComponent,
+    DetailPageComponent
   ],
   imports: [
     BrowserModule,
-    BootstrapModule,
     AppRoutingModule,
-    PostsModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]
