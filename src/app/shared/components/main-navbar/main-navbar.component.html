@@ -1,0 +1,23 @@
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" [ngClass]="{'bg-white': backgroundOpaque}">
+  <div class="container">
+    <a class="navbar-brand" href="#">WC</a>
+    <button type="button" class="navbar-toggler" (click)="navbarIsCollapsed = !navbarIsCollapsed">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div [collapse]="navbarIsCollapsed" class="navbar-collapse">
+      <ul class="navbar-nav mr-auto">
+      </ul>
+      <ul class="navbar-nav">
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" routerLink="/">Home</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" routerLink="/posts">Posts</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" routerLink="/about">About</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
