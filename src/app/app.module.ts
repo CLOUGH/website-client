@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 import { AppComponent } from './app.component';
@@ -13,7 +14,6 @@ import { MainLayoutComponent } from './shared/components/main-layout/main-layout
 import { SharedModule } from './shared/shared.module';
 import { ListPageComponent } from './posts/list-page/list-page.component';
 import { DetailPageComponent } from './posts/detail-page/detail-page.component';
-import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 
 @NgModule({
   declarations: [

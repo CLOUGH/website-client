@@ -1,0 +1,29 @@
+@import "../../../../../node_modules/bootstrap/scss/functions";
+@import "~assets/scss/variables";
+
+:host {
+  & > div {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+
+    p {
+      margin-bottom: .25rem;
+    }
+
+    .social-media-links {
+      text-align: center;
+
+      a {
+        color: $gray-900;
+        font-size: 20pt;
+      }
+    }
+
+    .copyright {
+      padding-top: 15px;
+      font-size: 11pt;
+    }
+
+    .contact-me {}
+  }
+}

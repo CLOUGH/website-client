@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, HostListener } from '@angular/core';
+import { Component, OnInit, ElementRef, HostListener, Input } from '@angular/core';
 
 @Component({
   selector: 'app-main-navbar',
@@ -8,6 +8,8 @@ import { Component, OnInit, ElementRef, HostListener } from '@angular/core';
 export class MainNavbarComponent implements OnInit {
   navbarIsCollapsed: boolean = true;
   backgroundOpaque: boolean = false;
+  @Input() opaqueAtTop: boolean;
+
   constructor(private elementRef: ElementRef) { }
 
   ngOnInit() {
@@ -16,14 +18,16 @@ export class MainNavbarComponent implements OnInit {
 
   @HostListener('window:scroll', ['$event'])
   onScroll(event) {
-    const rootElement = <Element>(document.documentElement || document.body.parentNode || document.body)
 
-    if (rootElement.scrollTop > 100) {
-      this.backgroundOpaque = true;
-    } else {
-      this.backgroundOpaque = false;
+    if (!this.opaqueAtTop || true) {
+      const rootElement = <Element>(document.documentElement || document.body.parentNode || document.body)
+
+      if (rootElement.scrollTop > 100) {
+        this.backgroundOpaque = true;
+      } else {
+        this.backgroundOpaque = false;
+      }
     }
-    console.log(rootElement.scrollTop, this.backgroundOpaque);
   }
 
 }
