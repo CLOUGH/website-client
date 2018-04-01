@@ -2,6 +2,12 @@
 @import "~assets/scss/variables";
 
 :host {
+  font-size: 11pt;
+
+  h5 {
+    font-size: 11pt;
+  }
+
   & > div {
     padding-top: 3rem;
     padding-bottom: 3rem;
@@ -15,13 +21,14 @@
 
       a {
         color: $gray-900;
-        font-size: 20pt;
+        font-size: 14pt;
+        text-decoration: none;
       }
     }
 
     .copyright {
       padding-top: 15px;
-      font-size: 11pt;
+      font-size: 9pt;
     }
 
     .contact-me {}

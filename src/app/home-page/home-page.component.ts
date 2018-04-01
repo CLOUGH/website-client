@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MainLayoutOptionsInterface } from '../shared/interfaces/main-layout-options-interface';
+import { ActivatedRoute } from '@angular/router';
+import { Post } from '../shared/models/post';
 
 @Component({
   selector: 'app-home-page',
@@ -8,15 +10,15 @@ import { MainLayoutOptionsInterface } from '../shared/interfaces/main-layout-opt
 })
 export class HomePageComponent implements OnInit {
   mainLayoutOptions: MainLayoutOptionsInterface;
+  posts: Post[] = [];
 
-  constructor() { }
+  constructor(private activatedRoute: ActivatedRoute) {
+  }
 
   ngOnInit() {
-    this.mainLayoutOptions = {
-      navbar: {
-        opaqueAtTop: false
-      }
-    };
+    this.activatedRoute.data.subscribe(({ posts }) => {
+      this.posts = posts;
+    });
   }
 
 }

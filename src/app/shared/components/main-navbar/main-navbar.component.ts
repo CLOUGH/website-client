@@ -6,21 +6,21 @@ import { Component, OnInit, ElementRef, HostListener, Input } from '@angular/cor
   styleUrls: ['./main-navbar.component.scss']
 })
 export class MainNavbarComponent implements OnInit {
-  navbarIsCollapsed: boolean = true;
-  backgroundOpaque: boolean = false;
+  navbarIsCollapsed = true;
+  backgroundOpaque = false;
   @Input() opaqueAtTop: boolean;
 
   constructor(private elementRef: ElementRef) { }
 
   ngOnInit() {
+    this.backgroundOpaque = this.opaqueAtTop || false;
   }
 
 
   @HostListener('window:scroll', ['$event'])
   onScroll(event) {
-
-    if (!this.opaqueAtTop || true) {
-      const rootElement = <Element>(document.documentElement || document.body.parentNode || document.body)
+    if (!this.opaqueAtTop) {
+      const rootElement = <Element>(document.documentElement || document.body.parentNode || document.body);
 
       if (rootElement.scrollTop > 100) {
         this.backgroundOpaque = true;

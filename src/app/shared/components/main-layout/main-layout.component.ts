@@ -9,20 +9,11 @@ import { MainLayoutOptionsInterface } from '../../interfaces/main-layout-options
 export class MainLayoutComponent implements OnInit {
   public layoutOptions: MainLayoutOptionsInterface;
 
-  @Input('options')
-  set options(value: MainLayoutOptionsInterface) {
-    this.layoutOptions = value;
-    console.log(this.layoutOptions, value);
-  };
+  @Input('navbarOpaqueAtTop') public navbarOpaqueAtTop;
 
   constructor() { }
 
   ngOnInit() {
-    this.layoutOptions = {
-      navbar: {
-        opaqueAtTop: true
-      }
-    }
   }
 
 }

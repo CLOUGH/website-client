@@ -7,14 +7,12 @@ import { PortfolioListPageComponent } from './portfolio/portfolio-list-page/port
 import { PortfolioEditPageComponent } from './portfolio/portfolio-edit-page/portfolio-edit-page.component';
 import { PageListPageComponent } from './pages/page-list-page/page-list-page.component';
 import { PageEditPageComponent } from './pages/page-edit-page/page-edit-page.component';
+import { PostCreatePageComponent } from './posts/post-create-page/post-create-page.component';
 
 const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   {
-    path: 'posts', children: [
-      { path: '', component: PostListPageComponent },
-      { path: ':id', component: PostEditPageComponent }
-    ]
+    path: 'posts', loadChildren: 'app/admin/posts/post.module#PostModule'
   },
   {
     path: 'portfolio', children: [

@@ -1,0 +1,26 @@
+@import "../../../node_modules/bootstrap/scss/functions";
+@import "~assets/scss/variables";
+
+:host {
+  & > div {
+    display: flex;
+    align-items: center;
+    min-height: 100vh;
+    -ms-flex-align: center;
+    -ms-flex-pack: center;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+
+    form {
+      width: 100%;
+      max-width: 400px;
+    }
+
+    a {
+      text-decoration: none;
+      color: $gray-900;
+    }
+  }
+}

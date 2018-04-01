@@ -1,9 +1,9 @@
 <div class="d-flex flex-column">
   <header>
-    <app-main-navbar [opaqueAtTop]="layoutOptions.navbar.opaqueAtTop"></app-main-navbar>
+    <app-main-navbar [opaqueAtTop]="navbarOpaqueAtTop"></app-main-navbar>
   </header>
 
-  <main role="main">
+  <main role="main" [ngClass]="{'navbar-opaque-at-top': navbarOpaqueAtTop}">
     <ng-content></ng-content>
   </main>
   <footer>

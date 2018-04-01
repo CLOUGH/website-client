@@ -5,11 +5,16 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { AboutPageComponent } from './about-page/about-page.component';
 import { ListPageComponent } from './posts/list-page/list-page.component';
 import { DetailPageComponent } from './posts/detail-page/detail-page.component';
+import { PublishedPostsResolverService } from './shared/resolvers/published-posts-resolver.service';
+import { PostResolverService } from './shared/resolvers/post-resolver.service';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'home',
     component: HomePageComponent,
+    resolve: {
+      posts: PublishedPostsResolverService
+    }
   },
   {
     path: 'login',
@@ -24,11 +29,17 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: ListPageComponent
+        component: ListPageComponent,
+        resolve: {
+          posts: PublishedPostsResolverService
+        }
       },
       {
         path: ':id',
-        component: DetailPageComponent
+        component: DetailPageComponent,
+        resolve: {
+          post: PostResolverService
+        }
       }
     ]
   },
@@ -36,7 +47,8 @@ const routes: Routes = [
   {
     path: 'admin',
     loadChildren: 'app/admin/admin.module#AdminModule'
-  }
+  },
+  { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 
 @NgModule({
