@@ -4,6 +4,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DropzoneConfigInterface } from 'ngx-dropzone-wrapper';
 import { environment } from '../../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
+import { BsModalService } from 'ngx-bootstrap';
+import { UploadModalComponent } from '../upload-modal/upload-modal.component';
 
 @Component({
   selector: 'app-post-form',
@@ -19,19 +21,10 @@ export class PostFormComponent implements OnInit {
       'froalaEditor.image.removed': this.deleteFrolaImageFromServer.bind(this)
     }
   };
-
   excerptEditorOptions = {
     toolbarButtons: []
   };
-
   _post: Post;
-
-  dropzoneConfig: DropzoneConfigInterface = {
-    // Change this to your upload POST address:
-    url: `${environment.apiUrl}/upload`,
-    maxFilesize: 50,
-    acceptedFiles: 'image/*'
-  };
 
 
   @Input('post')
@@ -42,7 +35,11 @@ export class PostFormComponent implements OnInit {
   @Output() postChange = new EventEmitter;
   @Output() formSubmitted = new EventEmitter;
 
-  constructor(private formBuilder: FormBuilder, private http: HttpClient) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private http: HttpClient,
+    private modalService: BsModalService
+  ) { }
 
   ngOnInit() {
     this.createForm();
@@ -53,6 +50,7 @@ export class PostFormComponent implements OnInit {
       title: ['', Validators.required],
       status: ['Draft', Validators.required],
       excerpt: ['', Validators.max(1000)],
+      featuredImage: [''],
       content: [''],
     });
     this.postForm.patchValue(this._post);
@@ -67,19 +65,23 @@ export class PostFormComponent implements OnInit {
   get title() { return this.postForm.get('title'); }
   get status() { return this.postForm.get('status'); }
   get excerpt() { return this.postForm.get('excerpt'); }
+  get featuredImage() { return this.postForm.get('featuredImage'); }
 
   submitForm() {
     this.formSubmitted.emit(Object.assign(this._post, this.postForm.value));
   }
-  onUploadError(args: any): void {
-    console.log('onUploadError:', args);
+
+  deleteFrolaImageFromServer(e, editor, $img) {
+    this.http.delete($img.attr('src')).subscribe((response) => { });
   }
 
-  onUploadSuccess(args: any): void {
-    console.log('onUploadSuccess:', args);
-  }
-  deleteFrolaImageFromServer(e, editor, $img) {
-    console.log(this);
-    this.http.delete($img.attr('src')).subscribe((response) => { });
+  chooseFeaturedImage() {
+    const modalRef = this.modalService.show(UploadModalComponent, {
+      animated: true
+    });
+
+    modalRef.content.onClose.subscribe(link => {
+      this.featuredImage.setValue(link);
+    });
   }
 }

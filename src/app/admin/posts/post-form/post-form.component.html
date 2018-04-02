@@ -18,9 +18,11 @@
 
   <div>
     <label for="">Featured Image</label>
-    <app-dropzone></app-dropzone>
+    <div class="featured-image bg-light" click="chooseFeaturedImage()">
+      <img [src]="featuredImage.value" *ngIf="featuredImage.value" />
+      <button class="btn btn-primary btn-sm" (click)="chooseFeaturedImage()">Choose Image</button>
+    </div>
   </div>
-
 
   <div class="form-group">
     <label for="content">Excerpt</label>

@@ -17,6 +17,9 @@ import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 import { PostListPageComponent } from './post-list-page/post-list-page.component';
 import { PostEditPageComponent } from './post-edit-page/post-edit-page.component';
 import { PostResolverService } from './post-resolver.service';
+import { DropzoneModule } from 'ngx-dropzone-wrapper';
+import { UploadModalComponent } from './upload-modal/upload-modal.component';
+import { BootstrapModule } from '../../shared/modules/bootstrap/bootstrap.module';
 
 
 @NgModule({
@@ -31,17 +34,23 @@ import { PostResolverService } from './post-resolver.service';
     FormsModule,
     FontAwesomeModule,
     MomentModule,
+    DropzoneModule,
+    BootstrapModule
   ],
   declarations: [
     PostListPageComponent,
     PostEditPageComponent,
     PostCreatePageComponent,
-    PostFormComponent
+    PostFormComponent,
+    UploadModalComponent
   ],
   providers: [
     PostService,
     PostsResolverService,
     PostResolverService
+  ],
+  entryComponents: [
+    UploadModalComponent
   ]
 })
 export class PostModule { }

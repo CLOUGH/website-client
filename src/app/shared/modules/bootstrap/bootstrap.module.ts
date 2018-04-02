@@ -28,7 +28,7 @@ import {
     ButtonsModule,
     CollapseModule,
     DatepickerModule,
-    ModalModule,
+    ModalModule.forRoot(),
     PaginationModule,
     PopoverModule,
     ProgressbarModule,

@@ -36,7 +36,6 @@
     "chart.js": "^2.7.2",
     "clamp-js": "^0.7.0",
     "core-js": "^2.4.1",
-    "fine-uploader": "^5.16.0",
     "moment": "^2.21.0",
     "ngx-bootstrap": "^2.0.3",
     "ngx-dropzone-wrapper": "^5.3.5",

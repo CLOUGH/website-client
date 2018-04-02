@@ -2,6 +2,7 @@ export class Post {
   _id?: string;
   status: string;
   title: string;
+  featuredImage: string;
   excerpt?: string;
   content?: string;
   createdAt?: Date;
