@@ -11,6 +11,7 @@ import { Post } from '../shared/models/post';
 export class HomePageComponent implements OnInit {
   mainLayoutOptions: MainLayoutOptionsInterface;
   posts: Post[] = [];
+  portfolios = [];
 
   constructor(private activatedRoute: ActivatedRoute) {
   }
