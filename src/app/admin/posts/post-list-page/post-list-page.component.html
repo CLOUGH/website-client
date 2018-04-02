@@ -20,7 +20,7 @@
           <td class="text-center">{{post.status}}</td>
           <td class="text-center">{{post.updatedAt | amTimeAgo }}</td>
           <td class="text-center">{{post.createdAt | date }}</td>
-          <td class="text-center">
+          <td class="text-center" (click)="$event.stopPropagation()">
             <button class="btn btn-danger btn-sm" (click)="deletePost(post)">
               <fa-icon [icon]="faTrash"></fa-icon>
             </button>

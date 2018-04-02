@@ -31,8 +31,8 @@ export class PostService {
       .map(data => <Post>data);
   }
 
-  delete(id): Observable<any> {
-    return this.http.delete(`${this.url}/${id}`);
+  delete(post): Observable<any> {
+    return this.http.delete(`${this.url}/${post._id}`);
   }
 
 }

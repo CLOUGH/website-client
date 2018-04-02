@@ -20,6 +20,7 @@ import { PostResolverService } from './post-resolver.service';
 import { DropzoneModule } from 'ngx-dropzone-wrapper';
 import { UploadModalComponent } from './upload-modal/upload-modal.component';
 import { BootstrapModule } from '../../shared/modules/bootstrap/bootstrap.module';
+import { DialogModule } from '../../shared/modules/dialog/dialog.module';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { BootstrapModule } from '../../shared/modules/bootstrap/bootstrap.module
     FontAwesomeModule,
     MomentModule,
     DropzoneModule,
-    BootstrapModule
+    BootstrapModule,
+    DialogModule
   ],
   declarations: [
     PostListPageComponent,
