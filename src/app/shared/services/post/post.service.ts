@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { Post } from '../../models/post';
 import { environment } from '../../../../environments/environment';
+import { map } from 'rxjs/operators';
 
 
 @Injectable()
