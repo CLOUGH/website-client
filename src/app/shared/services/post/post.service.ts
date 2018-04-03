@@ -14,22 +14,30 @@ export class PostService {
 
   getAll(params?: HttpParams): Observable<Post[]> {
     return this.http.get(this.url, { params: params })
-      .map(posts => <Post[]>posts);
+      .pipe(
+        map(posts => <Post[]>posts)
+      );
   }
 
   getOne(id): Observable<Post> {
     return this.http.get(`${this.url}/${id}`)
-      .map(post => <Post>post);
+      .pipe(
+        map(post => <Post>post)
+      );
   }
 
   create(post: Post): Observable<Post> {
     return this.http.post(this.url, post)
-      .map(data => <Post>data);
+      .pipe(
+        map(data => <Post>data)
+      );
   }
 
   save(post: Post): Observable<Post> {
     return this.http.put(`${this.url}/${post._id}`, post)
-      .map(data => <Post>data);
+      .pipe(
+        map(data => <Post>data)
+      );
   }
 
   delete(post): Observable<any> {
