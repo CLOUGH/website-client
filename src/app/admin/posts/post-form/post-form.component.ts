@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewRef, ElementRef } from '@angular/core';
 import { Post } from '../../../shared/models/post';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DropzoneConfigInterface } from 'ngx-dropzone-wrapper';
@@ -6,6 +6,7 @@ import { environment } from '../../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { BsModalService } from 'ngx-bootstrap';
 import { UploadModalComponent } from '../upload-modal/upload-modal.component';
+import { ClassicEditor } from '@ckeditor/ckeditor5-build-classic';
 
 @Component({
   selector: 'app-post-form',
@@ -34,7 +35,6 @@ export class PostFormComponent implements OnInit {
   }
   @Output() postChange = new EventEmitter;
   @Output() formSubmitted = new EventEmitter;
-
   constructor(
     private formBuilder: FormBuilder,
     private http: HttpClient,

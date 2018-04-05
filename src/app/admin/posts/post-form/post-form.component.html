@@ -26,7 +26,7 @@
 
   <div class="form-group">
     <label for="content">Excerpt</label>
-    <textarea [froalaEditor]="excerptEditorOptions" formControlName="excerpt" class="form-control" placeholder="Brief summary of the article"></textarea>
+    <textarea formControlName="excerpt" class="form-control" placeholder="Brief summary of the article"></textarea>
 
     <!-- Validation errors -->
     <small class="form-text" *ngIf="excerpt.invalid  && (excerpt.dirty || excerpt.touched)">
@@ -35,7 +35,7 @@
   </div>
   <div class="form-group">
     <label for="content">Content</label>
-    <textarea [froalaEditor]="contentEditorOptions" formControlName="content"></textarea>
+    <textarea formControlName="content" class="form-control"></textarea>
   </div>
   <button type="submit" class="btn btn-primary" (click)="submitForm()">Save</button>
 </form>

@@ -8,25 +8,35 @@ import { PortfolioEditPageComponent } from './portfolio/portfolio-edit-page/port
 import { PageListPageComponent } from './pages/page-list-page/page-list-page.component';
 import { PageEditPageComponent } from './pages/page-edit-page/page-edit-page.component';
 import { PostCreatePageComponent } from './posts/post-create-page/post-create-page.component';
+import { AuthGuard } from '../shared/services/auth/auth.guard';
+import { AdminComponent } from './admin.component';
 
 const routes: Routes = [
-  { path: 'dashboard', component: DashboardComponent },
   {
-    path: 'posts', loadChildren: 'app/admin/posts/post.module#PostModule'
-  },
-  {
-    path: 'portfolio', children: [
-      { path: '', component: PortfolioListPageComponent },
-      { path: ':id', component: PortfolioEditPageComponent }
+    path: '',
+    component: AdminComponent,
+    children: [
+      { path: 'dashboard', component: DashboardComponent },
+      {
+        path: 'posts', loadChildren: 'app/admin/posts/post.module#PostModule'
+      },
+      {
+        path: 'portfolio', children: [
+          { path: '', component: PortfolioListPageComponent },
+          { path: ':id', component: PortfolioEditPageComponent }
+        ]
+      },
+      {
+        path: 'pages', children: [
+          { path: '', component: PageListPageComponent },
+          { path: ':id', component: PageEditPageComponent }
+        ]
+      },
+      { path: '', redirectTo: 'dashboard', pathMatch: 'full' }
+
+
     ]
-  },
-  {
-    path: 'pages', children: [
-      { path: '', component: PageListPageComponent },
-      { path: ':id', component: PageEditPageComponent }
-    ]
-  },
-  { path: '', redirectTo: 'dashboard' }
+  }
 ];
 
 @NgModule({

@@ -4,6 +4,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MomentModule } from 'angular2-moment';
+import { CKEditorModule } from 'ngx-ckeditor';
 
 import { PostRoutingModule } from './post-routing.module';
 import { PostFormComponent } from './post-form/post-form.component';
@@ -12,7 +13,7 @@ import { PageEditPageComponent } from '../pages/page-edit-page/page-edit-page.co
 import { PageListPageComponent } from '../pages/page-list-page/page-list-page.component';
 import { PostService } from '../../shared/services/post/post.service';
 import { PostsResolverService } from './posts-resolver.service';
-import { SharedModule as AdminSharedModule } from '../shared/shared.module';
+import { SharedModule } from '../../shared/shared.module';
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 import { PostListPageComponent } from './post-list-page/post-list-page.component';
 import { PostEditPageComponent } from './post-edit-page/post-edit-page.component';
@@ -21,13 +22,13 @@ import { DropzoneModule } from 'ngx-dropzone-wrapper';
 import { UploadModalComponent } from './upload-modal/upload-modal.component';
 import { BootstrapModule } from '../../shared/modules/bootstrap/bootstrap.module';
 import { DialogModule } from '../../shared/modules/dialog/dialog.module';
+import { AdminSharedModule } from '../../shared/modules/admin-shared/admin-shared.module';
 
 
 @NgModule({
   imports: [
     CommonModule,
     PostRoutingModule,
-    AdminSharedModule,
     HttpClientModule,
     ReactiveFormsModule,
     FroalaEditorModule,
@@ -37,7 +38,9 @@ import { DialogModule } from '../../shared/modules/dialog/dialog.module';
     MomentModule,
     DropzoneModule,
     BootstrapModule,
-    DialogModule
+    DialogModule,
+    CKEditorModule,
+    AdminSharedModule
   ],
   declarations: [
     PostListPageComponent,

@@ -22,7 +22,9 @@
     ],
     "scripts": [
       "../node_modules/jquery/dist/jquery.min.js",
-      "../node_modules/froala-editor/js/froala_editor.pkgd.min.js"
+      "../node_modules/froala-editor/js/froala_editor.pkgd.min.js",
+      "../node_modules/auth0-js/build/auth0.js",
+      "../node_modules/@ckeditor/ckeditor5-build-classic/build/ckeditor.js"
     ],
     "environmentSource": "environments/environment.ts",
     "environments": {

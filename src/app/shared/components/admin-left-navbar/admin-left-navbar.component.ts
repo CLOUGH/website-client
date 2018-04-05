@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { } from "@fortawesome/fontawesome-free-regular";
-import { faThLarge, faNewspaper, faCamera, faFile } from "@fortawesome/fontawesome-free-solid";
+import { } from '@fortawesome/fontawesome-free-regular';
+import { faThLarge, faNewspaper, faCamera, faFile } from '@fortawesome/fontawesome-free-solid';
 
 @Component({
   selector: 'app-admin-left-navbar',

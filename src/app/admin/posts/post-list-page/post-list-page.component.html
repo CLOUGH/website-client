@@ -1,35 +1,33 @@
-<app-admin-layout>
-  <div class="container-fluid">
-    <h1 class="page-title">Posts</h1>
-    <div class="text-right">
-      <a class="btn btn-sm btn-outline-primary" routerLink="create">Create Post</a>
-    </div>
-    <table class="table table-striped table-hover mt-1">
-      <thead>
-        <tr>
-          <th>Title</th>
-          <th class="text-center">Status</th>
-          <th class="text-center">Updated</th>
-          <th class="text-center">Created</th>
-          <th class="text-center">Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let post of posts" [routerLink]="['/admin/posts', post._id]" class="clickable">
-          <td>{{post.title}}</td>
-          <td class="text-center">{{post.status}}</td>
-          <td class="text-center">{{post.updatedAt | amTimeAgo }}</td>
-          <td class="text-center">{{post.createdAt | date }}</td>
-          <td class="text-center" (click)="$event.stopPropagation()">
-            <button class="btn btn-danger btn-sm" (click)="deletePost(post)">
-              <fa-icon [icon]="faTrash"></fa-icon>
-            </button>
-          </td>
-        </tr>
-        <tr *ngIf="!posts.length">
-          <td colspan="5" class="text-center">No post records found</td>
-        </tr>
-      </tbody>
-    </table>
+<div class="container-fluid">
+  <h1 class="page-title">Posts</h1>
+  <div class="text-right">
+    <a class="btn btn-sm btn-outline-primary" routerLink="create">Create Post</a>
   </div>
-</app-admin-layout>
+  <table class="table table-striped table-hover mt-1">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th class="text-center">Status</th>
+        <th class="text-center">Updated</th>
+        <th class="text-center">Created</th>
+        <th class="text-center">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let post of posts" [routerLink]="['/admin/posts', post._id]" class="clickable">
+        <td>{{post.title}}</td>
+        <td class="text-center">{{post.status}}</td>
+        <td class="text-center">{{post.updatedAt | amTimeAgo }}</td>
+        <td class="text-center">{{post.createdAt | date }}</td>
+        <td class="text-center" (click)="$event.stopPropagation()">
+          <button class="btn btn-danger btn-sm" (click)="deletePost(post)">
+            <fa-icon [icon]="faTrash"></fa-icon>
+          </button>
+        </td>
+      </tr>
+      <tr *ngIf="!posts.length">
+        <td colspan="5" class="text-center">No post records found</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

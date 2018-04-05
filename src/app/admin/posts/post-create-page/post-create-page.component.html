@@ -1,15 +1,13 @@
-<app-admin-layout>
-  <div class="heading mb-4">
-    <h1 class="">New Post</h1>
-    <nav aria-label="breadcrumb">
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item">
-          <a routerLink="/admin/posts">Posts</a>
-        </li>
-        <li class="breadcrumb-item active" aria-current="page">Create</li>
-      </ol>
-    </nav>
-  </div>
+<div class="heading mb-4">
+  <h1 class="">New Post</h1>
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a routerLink="/admin/posts">Posts</a>
+      </li>
+      <li class="breadcrumb-item active" aria-current="page">Create</li>
+    </ol>
+  </nav>
+</div>
 
-  <app-post-form [(post)]="post" (formSubmitted)="onFormSubmitted($event)"></app-post-form>
-</app-admin-layout>
+<app-post-form [(post)]="post" (formSubmitted)="onFormSubmitted($event)"></app-post-form>
