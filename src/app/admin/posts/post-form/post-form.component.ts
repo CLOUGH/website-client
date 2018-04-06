@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, ViewRef, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewRef, ElementRef, ViewChild } from '@angular/core';
 import { Post } from '../../../shared/models/post';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DropzoneConfigInterface } from 'ngx-dropzone-wrapper';
@@ -6,8 +6,8 @@ import { environment } from '../../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { BsModalService } from 'ngx-bootstrap';
 import { UploadModalComponent } from '../upload-modal/upload-modal.component';
-import { ClassicEditor } from '@ckeditor/ckeditor5-build-classic';
-
+import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import EasyImage from '@ckeditor/ckeditor5-easy-image/src/easyimage';
 @Component({
   selector: 'app-post-form',
   templateUrl: './post-form.component.html',
@@ -15,6 +15,8 @@ import { ClassicEditor } from '@ckeditor/ckeditor5-build-classic';
 })
 export class PostFormComponent implements OnInit {
   postForm: FormGroup;
+  _post: Post;
+  editor: any;
   contentEditorOptions = {
     height: 500,
     imageUploadURL: `${environment.apiUrl}/upload?froala=true`,
@@ -25,16 +27,19 @@ export class PostFormComponent implements OnInit {
   excerptEditorOptions = {
     toolbarButtons: []
   };
-  _post: Post;
-
 
   @Input('post')
   set post(value: Post) {
     this._post = value;
     this.createForm();
+    if (this.editor) {
+      this.editor.setData(this._post.content);
+    }
   }
   @Output() postChange = new EventEmitter;
   @Output() formSubmitted = new EventEmitter;
+  @ViewChild('content') content: ElementRef;
+
   constructor(
     private formBuilder: FormBuilder,
     private http: HttpClient,
@@ -42,9 +47,32 @@ export class PostFormComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.initializeCkEditor();
     this.createForm();
     this.onFormChanges();
   }
+
+  initializeCkEditor() {
+    ClassicEditor
+      .create(this.content.nativeElement, {
+        ckfinder: {
+          uploadUrl: `${environment.apiUrl}/upload`
+        }
+      })
+      .then(newEditor => {
+        this.editor = newEditor;
+
+        this.editor.model.document.on('change', () => {
+          this.postForm.get('content').setValue(this.editor.getData());
+        });
+
+        this.editor.setData(this._post.content);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
+
   createForm() {
     this.postForm = this.formBuilder.group({
       title: ['', Validators.required],
@@ -58,14 +86,9 @@ export class PostFormComponent implements OnInit {
 
   onFormChanges() {
     this.postForm.valueChanges.subscribe(value => {
-      console.log(value);
+      // console.log(value);
     });
   }
-
-  get title() { return this.postForm.get('title'); }
-  get status() { return this.postForm.get('status'); }
-  get excerpt() { return this.postForm.get('excerpt'); }
-  get featuredImage() { return this.postForm.get('featuredImage'); }
 
   submitForm() {
     this.formSubmitted.emit(Object.assign(this._post, this.postForm.value));
@@ -80,8 +103,13 @@ export class PostFormComponent implements OnInit {
       animated: true
     });
 
-    modalRef.content.onClose.subscribe(link => {
-      this.featuredImage.setValue(link);
+    modalRef.content.onClose.subscribe(url => {
+      this.featuredImage.setValue(url);
     });
   }
+
+  get title() { return this.postForm.get('title'); }
+  get status() { return this.postForm.get('status'); }
+  get excerpt() { return this.postForm.get('excerpt'); }
+  get featuredImage() { return this.postForm.get('featuredImage'); }
 }

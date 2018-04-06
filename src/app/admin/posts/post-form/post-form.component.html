@@ -35,7 +35,7 @@
   </div>
   <div class="form-group">
     <label for="content">Content</label>
-    <textarea formControlName="content" class="form-control"></textarea>
+    <textarea class="form-control" #content formControlName="content"></textarea>
   </div>
   <button type="submit" class="btn btn-primary" (click)="submitForm()">Save</button>
 </form>

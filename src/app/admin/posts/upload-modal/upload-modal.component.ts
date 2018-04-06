@@ -31,7 +31,7 @@ export class UploadModalComponent implements OnInit {
   }
 
   onUploadSuccess(args: any): void {
-    this.imageLink = args[1].link;
+    this.imageLink = args[1].url;
   }
 
   ok() {

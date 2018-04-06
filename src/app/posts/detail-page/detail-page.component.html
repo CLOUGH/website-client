@@ -4,7 +4,7 @@
     <div class="text-right mt-3 mb-3">
       <small>Updated {{post.updatedAt | date: 'MMMM d, y, h:mm a'}}</small>
     </div>
-    <img [src]="post.featuredImage" *ngIf="post.featuredImage" class="featured-image" />
+    <!-- <img [src]="post.featuredImage" *ngIf="post.featuredImage" class="featured-image" /> -->
     <div [innerHTML]="post.content | trustedStyle" class="fr-view"></div>
   </article>
 </app-main-layout>

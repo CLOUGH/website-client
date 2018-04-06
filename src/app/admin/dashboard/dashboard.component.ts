@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewRef, ElementRef, ViewChild } from '@angular/core';
 import { Chart } from 'chart.js';
 
 @Component({
@@ -7,12 +7,14 @@ import { Chart } from 'chart.js';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  chart = [];
+  chart: any;
+  @ViewChild('mainChart') mainChart: ElementRef;
 
   constructor() { }
 
   ngOnInit() {
-    this.chart = new Chart('myChart', {
+
+    this.chart = new Chart(this.mainChart.nativeElement, {
       type: 'line',
       data: {
         labels: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
@@ -26,10 +28,12 @@ export class DashboardComponent implements OnInit {
         }]
       },
       options: {
+        responsive: true,
+
         scales: {
           yAxes: [{
             ticks: {
-              beginAtZero: false
+
             }
           }]
         },

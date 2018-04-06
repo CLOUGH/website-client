@@ -23,14 +23,15 @@ import { DialogModule } from './modules/dialog/dialog.module';
   ],
   declarations: [
     FooterComponent,
-    TrustedStylePipe
+    TrustedStylePipe,
+    CkeditorComponent
   ],
   providers: [
     PostService,
     PublishedPostsResolverService,
     PostResolverService,
     AuthService,
-    AuthGuard
+    AuthGuard,
   ],
   exports: [
     TrustedStylePipe,
@@ -38,6 +39,7 @@ import { DialogModule } from './modules/dialog/dialog.module';
     BootstrapModule,
     DialogModule,
     FontAwesomeModule,
+    CkeditorComponent
   ]
 })
 export class SharedModule { }

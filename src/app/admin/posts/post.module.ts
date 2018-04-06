@@ -4,7 +4,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MomentModule } from 'angular2-moment';
-import { CKEditorModule } from 'ngx-ckeditor';
 
 import { PostRoutingModule } from './post-routing.module';
 import { PostFormComponent } from './post-form/post-form.component';
@@ -22,7 +21,6 @@ import { DropzoneModule } from 'ngx-dropzone-wrapper';
 import { UploadModalComponent } from './upload-modal/upload-modal.component';
 import { BootstrapModule } from '../../shared/modules/bootstrap/bootstrap.module';
 import { DialogModule } from '../../shared/modules/dialog/dialog.module';
-import { AdminSharedModule } from '../../shared/modules/admin-shared/admin-shared.module';
 
 
 @NgModule({
@@ -39,8 +37,7 @@ import { AdminSharedModule } from '../../shared/modules/admin-shared/admin-share
     DropzoneModule,
     BootstrapModule,
     DialogModule,
-    CKEditorModule,
-    AdminSharedModule
+    SharedModule,
   ],
   declarations: [
     PostListPageComponent,

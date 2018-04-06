@@ -21,7 +21,6 @@ import { PostFormComponent } from './posts/post-form/post-form.component';
 import { PostModule } from './posts/post.module';
 import { SharedModule } from '../shared/shared.module';
 import { AuthGuard } from '../shared/services/auth/auth.guard';
-import { AdminSharedModule } from '../shared/modules/admin-shared/admin-shared.module';
 import { AdminComponent } from './admin.component';
 
 @NgModule({
@@ -30,8 +29,7 @@ import { AdminComponent } from './admin.component';
     AdminRoutingModule,
     FontAwesomeModule,
     PostModule,
-    SharedModule,
-    AdminSharedModule,
+    SharedModule
   ],
   declarations: [
     AdminLayoutComponent,
@@ -42,9 +40,6 @@ import { AdminComponent } from './admin.component';
     PageEditPageComponent,
     PortfolioEditPageComponent,
     PortfolioListPageComponent,
-    AdminComponent
-  ],
-  entryComponents: [
     AdminComponent
   ]
 })
