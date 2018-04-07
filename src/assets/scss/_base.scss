@@ -23,3 +23,7 @@ body {
 .custom-select.is-valid ~ .valid-tooltip {
   display: block;
 }
+
+.ck-editor__editable {
+  min-height: 400px;
+}

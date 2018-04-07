@@ -24,6 +24,7 @@ import { DialogModule } from './modules/dialog/dialog.module';
   declarations: [
     FooterComponent,
     TrustedStylePipe,
+    CkeditorComponent,
     CkeditorComponent
   ],
   providers: [

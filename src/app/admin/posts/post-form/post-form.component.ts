@@ -6,8 +6,7 @@ import { environment } from '../../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { BsModalService } from 'ngx-bootstrap';
 import { UploadModalComponent } from '../upload-modal/upload-modal.component';
-import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import EasyImage from '@ckeditor/ckeditor5-easy-image/src/easyimage';
+
 @Component({
   selector: 'app-post-form',
   templateUrl: './post-form.component.html',
@@ -17,13 +16,7 @@ export class PostFormComponent implements OnInit {
   postForm: FormGroup;
   _post: Post;
   editor: any;
-  contentEditorOptions = {
-    height: 500,
-    imageUploadURL: `${environment.apiUrl}/upload?froala=true`,
-    events: {
-      'froalaEditor.image.removed': this.deleteFrolaImageFromServer.bind(this)
-    }
-  };
+  ckeditorConfig: any;
   excerptEditorOptions = {
     toolbarButtons: []
   };
@@ -47,30 +40,13 @@ export class PostFormComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.initializeCkEditor();
     this.createForm();
     this.onFormChanges();
-  }
-
-  initializeCkEditor() {
-    ClassicEditor
-      .create(this.content.nativeElement, {
-        ckfinder: {
-          uploadUrl: `${environment.apiUrl}/upload`
-        }
-      })
-      .then(newEditor => {
-        this.editor = newEditor;
-
-        this.editor.model.document.on('change', () => {
-          this.postForm.get('content').setValue(this.editor.getData());
-        });
-
-        this.editor.setData(this._post.content);
-      })
-      .catch(error => {
-        console.log(error);
-      });
+    this.ckeditorConfig = {
+      ckfinder: {
+        uploadUrl: `${environment.apiUrl}/upload`
+      }
+    };
   }
 
   createForm() {
