@@ -13,16 +13,21 @@ import { AuthGuard } from './services/auth/auth.guard';
 import { AuthService } from './services/auth/auth.service';
 import { CkeditorComponent } from './components/ckeditor/ckeditor.component';
 import { DialogModule } from './modules/dialog/dialog.module';
+import { TokenStorageService } from './services/token-storage/token-storage.service';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { TokenInterceptorService } from './services/token-interceptor/token-interceptor.service';
+import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
+import { HttpResponseInterceptorService } from './services/http-response-interceptor/http-response-interceptor.service';
 
 @NgModule({
   imports: [
     CommonModule,
     BootstrapModule,
     DialogModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    HttpClientModule
   ],
   declarations: [
-    FooterComponent,
     TrustedStylePipe,
     CkeditorComponent,
     CkeditorComponent
@@ -33,10 +38,20 @@ import { DialogModule } from './modules/dialog/dialog.module';
     PostResolverService,
     AuthService,
     AuthGuard,
+    TokenStorageService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpResponseInterceptorService,
+      multi: true
+    },
   ],
   exports: [
     TrustedStylePipe,
-    FooterComponent,
     BootstrapModule,
     DialogModule,
     FontAwesomeModule,

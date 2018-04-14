@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 import { ReactiveFormsModule, Validators, FormsModule } from '@angular/forms';
@@ -22,6 +22,7 @@ import { PostModule } from './posts/post.module';
 import { SharedModule } from '../shared/shared.module';
 import { AuthGuard } from '../shared/services/auth/auth.guard';
 import { AdminComponent } from './admin.component';
+import { TokenInterceptorService } from '../shared/services/token-interceptor/token-interceptor.service';
 
 @NgModule({
   imports: [
@@ -41,6 +42,7 @@ import { AdminComponent } from './admin.component';
     PortfolioEditPageComponent,
     PortfolioListPageComponent,
     AdminComponent
-  ]
+  ],
+  providers: []
 })
 export class AdminModule { }

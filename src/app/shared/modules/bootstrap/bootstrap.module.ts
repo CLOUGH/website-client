@@ -24,7 +24,7 @@ import {
     CommonModule,
     AccordionModule,
     AlertModule,
-    BsDropdownModule,
+    BsDropdownModule.forRoot(),
     ButtonsModule,
     CollapseModule,
     DatepickerModule,
@@ -36,7 +36,7 @@ import {
     SortableModule,
     TabsModule,
     TimepickerModule,
-    TooltipModule
+    TooltipModule,
   ],
   declarations: [],
   exports: [

@@ -1,17 +1,17 @@
 <div>
-  <form>
+  <form [formGroup]="loginForm" (ngSubmit)="login()" novalidate>
     <h1 class="display-1 text-center">
       <a routerLink="/">WC</a>
     </h1>
     <h5 class="text-center mb-3 ">Please sign in</h5>
     <div class="form-group">
       <label for="inputEmail">Email address</label>
-      <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+      <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus formControlName="email">
 
     </div>
     <div class="form-group">
       <label for="inputPassword">Password</label>
-      <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+      <input type="password" id="inputPassword" class="form-control" placeholder="Password" required formControlName="password">
     </div>
 
     <div class="checkbox mb-3">

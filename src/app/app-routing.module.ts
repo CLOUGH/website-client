@@ -8,7 +8,6 @@ import { DetailPageComponent } from './posts/detail-page/detail-page.component';
 import { PublishedPostsResolverService } from './shared/resolvers/published-posts-resolver.service';
 import { PostResolverService } from './shared/resolvers/post-resolver.service';
 import { AuthGuard } from './shared/services/auth/auth.guard';
-import { CallbackComponent } from './callback/callback.component';
 
 const routes: Routes = [
   {
@@ -50,10 +49,9 @@ const routes: Routes = [
     path: 'admin',
     loadChildren: 'app/admin/admin.module#AdminModule',
     canActivate: [
-      // AuthGuard
+      AuthGuard
     ]
   },
-  { path: 'callback', component: CallbackComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
 ];
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { faTwitter, faGithub, faYoutube, faFacebookF, faGooglePlusG } from "@fortawesome/fontawesome-free-brands";
-import { faCircle } from "@fortawesome/fontawesome-free-solid";
+import { faTwitter, faGithub, faYoutube, faFacebookF, faGooglePlusG } from '@fortawesome/fontawesome-free-brands';
+import { faCircle } from '@fortawesome/fontawesome-free-solid';
+import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
   selector: 'app-footer',
@@ -15,7 +16,7 @@ export class FooterComponent implements OnInit {
   faFacebookF = faFacebookF;
   faGooglePlusG = faGooglePlusG;
 
-  constructor() { }
+  constructor(public auth: AuthService) { }
 
   ngOnInit() {
   }

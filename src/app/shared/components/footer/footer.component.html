@@ -5,17 +5,15 @@
       <h5>Contact</h5>
       <a href="mailto:clough.warren@gmail.com">clough.warren@hotmail.com</a>
     </div>
-    <div class="col text-center social-media-links">
-      <h5>Share</h5>
-      <a href="https://twitter.com/home?status=warrenclough.com">
-        <fa-icon [icon]="faTwitter" transform="shrink-8" [mask]="faCircle" class="fa-1x"></fa-icon>
-      </a>
-      <a href="https://twitter.com/home?status=warrenclough.com">
-        <fa-icon [icon]="faFacebookF" transform="shrink-8" [mask]="faCircle" class="fa-1x"></fa-icon>
-      </a>
-      <a href="https://plus.google.com/share?url=warrenclough.com">
-        <fa-icon [icon]="faGooglePlusG" transform="shrink-8" [mask]="faCircle" class="fa-1x"></fa-icon>
-      </a>
+    <div class="col">
+      <h5>Links</h5>
+      <a routerLink="/home">Home</a>
+      <br />
+      <a routerLink="/posts">Posts</a>
+      <br />
+      <a routerLink="/about">About</a>
+      <br />
+      <a routerLink="/login" *ngIf="!auth.isLoggedIn">Login</a>
     </div>
     <div class="col social-media-links text-center">
       <h5>Follow</h5>

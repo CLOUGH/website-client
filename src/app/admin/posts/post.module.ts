@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MomentModule } from 'angular2-moment';
 
@@ -21,6 +21,7 @@ import { DropzoneModule } from 'ngx-dropzone-wrapper';
 import { UploadModalComponent } from './upload-modal/upload-modal.component';
 import { BootstrapModule } from '../../shared/modules/bootstrap/bootstrap.module';
 import { DialogModule } from '../../shared/modules/dialog/dialog.module';
+import { TokenInterceptorService } from '../../shared/services/token-interceptor/token-interceptor.service';
 
 
 @NgModule({
@@ -49,7 +50,12 @@ import { DialogModule } from '../../shared/modules/dialog/dialog.module';
   providers: [
     PostService,
     PostsResolverService,
-    PostResolverService
+    PostResolverService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true
+    }
   ],
   entryComponents: [
     UploadModalComponent

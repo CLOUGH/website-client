@@ -1,4 +1,6 @@
 import { Component, OnInit, ElementRef, HostListener, Input } from '@angular/core';
+import { AuthService } from '../../services/auth/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-main-navbar',
@@ -10,7 +12,7 @@ export class MainNavbarComponent implements OnInit {
   backgroundOpaque = false;
   @Input() opaqueAtTop: boolean;
 
-  constructor(private elementRef: ElementRef) { }
+  constructor(private elementRef: ElementRef, public auth: AuthService, private router: Router) { }
 
   ngOnInit() {
     this.backgroundOpaque = this.opaqueAtTop || false;
@@ -28,6 +30,11 @@ export class MainNavbarComponent implements OnInit {
         this.backgroundOpaque = false;
       }
     }
+  }
+
+  logout() {
+    this.auth.logout();
+    this.router.navigate(['/home']);
   }
 
 }
