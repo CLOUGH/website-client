@@ -1,12 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
 
-@import "../node_modules/bootstrap/scss/functions";
+@import "~bootstrap/scss/functions";
 @import "assets/scss/fonts";
 @import "assets/scss/variables";
-@import "../node_modules/bootstrap/scss/bootstrap";
-@import "../node_modules/froala-editor/css/froala_editor.pkgd.min.css";
-@import "../node_modules/froala-editor/css/froala_style.min.css";
-@import "../node_modules/font-awesome/css/font-awesome.css";
+@import "~bootstrap/scss/bootstrap";
+@import "~froala-editor/css/froala_editor.pkgd.min.css";
+@import "~froala-editor/css/froala_style.min.css";
+@import "~font-awesome/css/font-awesome.css";
 @import "~dropzone/dist/min/dropzone.min.css";
 @import "~@ckeditor/ckeditor5-image/theme/imagestyle.css";
+@import "~ngx-toastr/toastr.css";
 @import "assets/scss/base";

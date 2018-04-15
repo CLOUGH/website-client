@@ -19,6 +19,8 @@ import { MainLayoutComponent } from './shared/components/main-layout/main-layout
 import { TokenInterceptorService } from './shared/services/token-interceptor/token-interceptor.service';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { FooterComponent } from './shared/components/footer/footer.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   imports: [
     HttpClientModule,
@@ -30,7 +32,13 @@ import { FooterComponent } from './shared/components/footer/footer.component';
     MomentModule,
     SharedModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      timeOut: 10000,
+      positionClass: 'toast-bottom-right',
+      preventDuplicates: true,
+    })
   ],
   declarations: [
     AppComponent,

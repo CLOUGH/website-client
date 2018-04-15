@@ -23,11 +23,9 @@ export class PostFormComponent implements OnInit {
 
   @Input('post')
   set post(value: Post) {
+    console.log(value);
     this._post = value;
     this.createForm();
-    if (this.editor) {
-      this.editor.setData(this._post.content);
-    }
   }
   @Output() postChange = new EventEmitter;
   @Output() formSubmitted = new EventEmitter;

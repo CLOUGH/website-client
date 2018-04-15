@@ -1,6 +1,7 @@
 import { Component, OnInit, ElementRef, HostListener, Input } from '@angular/core';
 import { AuthService } from '../../services/auth/auth.service';
 import { Router } from '@angular/router';
+import { faUser } from '@fortawesome/fontawesome-free-solid';
 
 @Component({
   selector: 'app-main-navbar',
@@ -10,6 +11,8 @@ import { Router } from '@angular/router';
 export class MainNavbarComponent implements OnInit {
   navbarIsCollapsed = true;
   backgroundOpaque = false;
+  faUser = faUser;
+
   @Input() opaqueAtTop: boolean;
 
   constructor(private elementRef: ElementRef, public auth: AuthService, private router: Router) { }

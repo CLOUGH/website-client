@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Post } from '../../../shared/models/post';
 import { PostService } from '../../../shared/services/post/post.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-post-create-page',
@@ -11,7 +12,7 @@ import { Router } from '@angular/router';
 export class PostCreatePageComponent implements OnInit {
   post: Post;
 
-  constructor(private postService: PostService, private router: Router) { }
+  constructor(private postService: PostService, private router: Router, private toastr: ToastrService) { }
 
   ngOnInit() {
     this.post = new Post({ title: '', content: '', status: 'Draft' });
@@ -19,9 +20,9 @@ export class PostCreatePageComponent implements OnInit {
 
   onFormSubmitted(event) {
     this.post = event;
-    this.postService.create(this.post).subscribe(updatedPost => {
-      this.post = updatedPost;
-      this.router.navigate(['admin/posts']);
+    this.postService.create(this.post).subscribe(createPost => {
+      this.toastr.success('Post successfully created');
+      this.router.navigate(['admin/posts/', createPost._id]);
     });
   }
 }

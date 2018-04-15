@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PostService } from '../../../shared/services/post/post.service';
 import { Post } from '../../../shared/models/post';
 import { Router, ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-post-edit-page',
@@ -14,7 +15,8 @@ export class PostEditPageComponent implements OnInit {
   constructor(
     private postService: PostService,
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit() {
@@ -25,8 +27,7 @@ export class PostEditPageComponent implements OnInit {
   }
   onFormSubmitted(post: Post) {
     this.postService.save(post).subscribe(updatedPost => {
-      this.post = updatedPost;
-      this.router.navigate(['admin/posts']);
+      this.toastr.success('Post successfully updated');
     });
   }
 
