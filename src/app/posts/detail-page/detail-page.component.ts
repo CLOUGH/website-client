@@ -12,13 +12,13 @@ export class DetailPageComponent implements OnInit {
   post: Post;
   content: SafeStyle;
   constructor(private activatedRoute: ActivatedRoute, private title: Title) {
-
+    this.title.setTitle('Post');
   }
 
   ngOnInit() {
     this.activatedRoute.data.subscribe(({ post }) => {
       this.post = post;
-      this.title.setTitle(`${post.title}: Post`);
+      this.title.setTitle(`Post: ${post.title}`);
     });
   }
 
