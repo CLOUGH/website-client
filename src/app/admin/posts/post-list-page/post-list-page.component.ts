@@ -5,6 +5,7 @@ import { PostService } from '../../../shared/services/post/post.service';
 import { ActivatedRoute } from '@angular/router';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap';
 import { ConfirmDialogComponent } from '../../../shared/modules/dialog/confirm-dialog/confirm-dialog.component';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-post-list-page',
@@ -19,8 +20,9 @@ export class PostListPageComponent implements OnInit {
   constructor(
     private postService: PostService,
     private activatedRoute: ActivatedRoute,
-    private modalService: BsModalService) {
-
+    private modalService: BsModalService,
+    private title: Title) {
+    this.title.setTitle('Posts');
   }
 
   ngOnInit() {

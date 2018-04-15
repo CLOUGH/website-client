@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Post } from '../../shared/models/post';
 import { ActivatedRoute } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-list-page',
@@ -10,7 +11,9 @@ import { ActivatedRoute } from '@angular/router';
 export class ListPageComponent implements OnInit {
   posts: Post[] = [];
 
-  constructor(private activatedRoute: ActivatedRoute) { }
+  constructor(private activatedRoute: ActivatedRoute, private title: Title) {
+    this.title.setTitle('Post');
+  }
 
   ngOnInit() {
     this.activatedRoute.data.subscribe(({ posts }) => {

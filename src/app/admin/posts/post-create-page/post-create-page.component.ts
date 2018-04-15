@@ -3,6 +3,7 @@ import { Post } from '../../../shared/models/post';
 import { PostService } from '../../../shared/services/post/post.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-post-create-page',
@@ -12,7 +13,9 @@ import { ToastrService } from 'ngx-toastr';
 export class PostCreatePageComponent implements OnInit {
   post: Post;
 
-  constructor(private postService: PostService, private router: Router, private toastr: ToastrService) { }
+  constructor(private postService: PostService, private router: Router, private toastr: ToastrService, private title: Title) {
+    this.title.setTitle('Posts');
+  }
 
   ngOnInit() {
     this.post = new Post({ title: '', content: '', status: 'Draft' });

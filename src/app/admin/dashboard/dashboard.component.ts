@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewRef, ElementRef, ViewChild } from '@angular/core';
 import { Chart } from 'chart.js';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,7 +11,9 @@ export class DashboardComponent implements OnInit {
   chart: any;
   @ViewChild('mainChart') mainChart: ElementRef;
 
-  constructor() { }
+  constructor(private title: Title) {
+    this.title.setTitle('Dashboard');
+  }
 
   ngOnInit() {
 

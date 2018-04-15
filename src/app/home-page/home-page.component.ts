@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MainLayoutOptionsInterface } from '../shared/interfaces/main-layout-options-interface';
 import { ActivatedRoute } from '@angular/router';
 import { Post } from '../shared/models/post';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-home-page',
@@ -13,7 +14,8 @@ export class HomePageComponent implements OnInit {
   posts: Post[] = [];
   portfolios = [];
 
-  constructor(private activatedRoute: ActivatedRoute) {
+  constructor(private activatedRoute: ActivatedRoute, private titleService: Title) {
+    this.titleService.setTitle('Home');
   }
 
   ngOnInit() {

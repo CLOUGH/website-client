@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, Validators, FormGroup } from '@angular/forms'
 import { AuthService } from '../shared/services/auth/auth.service';
 import { TokenStorageService } from '../shared/services/token-storage/token-storage.service';
 import { Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-login-page',
@@ -12,7 +13,14 @@ import { Router } from '@angular/router';
 export class LoginPageComponent implements OnInit {
   loginForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private auth: AuthService, private token: TokenStorageService, private router: Router) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private auth: AuthService,
+    private token: TokenStorageService,
+    private router: Router,
+    private title: Title) {
+    title.setTitle('Login');
+  }
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({

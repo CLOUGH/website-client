@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Post } from '../../shared/models/post';
-import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
+import { DomSanitizer, SafeStyle, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-detail-page',
@@ -11,12 +11,14 @@ import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
 export class DetailPageComponent implements OnInit {
   post: Post;
   content: SafeStyle;
-  constructor(private activatedRoute: ActivatedRoute, private sanitizer: DomSanitizer) { }
+  constructor(private activatedRoute: ActivatedRoute, private title: Title) {
+
+  }
 
   ngOnInit() {
     this.activatedRoute.data.subscribe(({ post }) => {
       this.post = post;
-      this.content = this.sanitizer.bypassSecurityTrustStyle(this.post.content);
+      this.title.setTitle(`${post.title}: Post`);
     });
   }
 
