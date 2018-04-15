@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, isDevMode } from '@angular/core';
+import { Router, NavigationEnd } from '@angular/router';
+import { environment } from '../../environments/environment';
+declare let ga: Function;
 
 @Component({
   selector: 'app-admin',
@@ -7,7 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) {
+    if (!isDevMode()) {
+      ga('create', environment.googleAnalytics.trackingId, 'auto');
+
+      this.router.events.subscribe(event => {
+        if (event instanceof NavigationEnd) {
+          ga('set', 'page', event.urlAfterRedirects);
+          ga('send', 'pageview');
+        }
+      });
+    }
+  }
 
   ngOnInit() {
   }
