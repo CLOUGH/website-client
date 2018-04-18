@@ -1,0 +1,20 @@
+svg {
+  .y-axis,
+  .x-axis {
+    line {
+      stroke: #CECECE;
+    }
+    path {
+      stroke: #CECECE;
+    }
+    text {
+      font-family: 'IBM Plex Sans Thin', sans-serif;
+      stroke: #666666;
+    }
+  }
+  .dot {
+    fill: #3DA3E8;
+    stroke: #3DA3E8;
+    stroke-width: 1.5px;
+  }
+}

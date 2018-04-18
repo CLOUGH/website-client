@@ -18,6 +18,8 @@ import { PublishedPostsResolverService } from './resolvers/published-posts-resol
 import { TokenInterceptorService } from './services/token-interceptor/token-interceptor.service';
 import { TokenStorageService } from './services/token-storage/token-storage.service';
 import { TrustedStylePipe } from './pipes/trusted-style.pipe';
+import { GoogleAnalyticsService } from './services/google-analytics/google-analytics.service';
+import { UsersChartComponent } from './components/users-chart/users-chart.component';
 
 
 @NgModule({
@@ -31,7 +33,8 @@ import { TrustedStylePipe } from './pipes/trusted-style.pipe';
   declarations: [
     CkeditorComponent,
     CkeditorComponent,
-    TrustedStylePipe
+    TrustedStylePipe,
+    UsersChartComponent
   ],
   providers: [
     AuthGuard,
@@ -40,6 +43,7 @@ import { TrustedStylePipe } from './pipes/trusted-style.pipe';
     PostService,
     PublishedPostsResolverService,
     TokenStorageService,
+    GoogleAnalyticsService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,
@@ -57,6 +61,7 @@ import { TrustedStylePipe } from './pipes/trusted-style.pipe';
     DialogModule,
     FontAwesomeModule,
     TrustedStylePipe,
+    UsersChartComponent
   ]
 })
 export class SharedModule { }
