@@ -1,5 +1,21 @@
 svg {
+  text {
+    font-family: 'IBM Plex Sans Thin', sans-serif;
+  }
+  .axis--x path {
+    display: none;
+  }
+  .line {
+    fill: none;
+    stroke: steelblue; // stroke-width: 1.5px;
+  }
   .y-axis,
+  .grid {
+    line,
+    path {
+      stroke: rgb(230, 230, 230);
+    }
+  }
   .x-axis {
     line {
       stroke: #CECECE;
