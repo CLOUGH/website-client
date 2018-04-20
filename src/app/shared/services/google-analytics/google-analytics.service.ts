@@ -21,4 +21,8 @@ export class GoogleAnalyticsService {
   pageViewPerDay() {
     return this.http.get(`${this.url}/page-views-per-day`);
   }
+
+  getGeolocation() {
+    return this.http.get(`${this.url}/user-geolocation`);
+  }
 }

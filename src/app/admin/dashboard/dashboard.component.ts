@@ -12,6 +12,7 @@ export class DashboardComponent implements OnInit {
   public userData: any;
   public pageData: any;
   public pageViewsPerDay: any;
+  public userGeoData: any;
 
   chart: any;
   @ViewChild('mainChart') mainChart: ElementRef;
@@ -33,7 +34,9 @@ export class DashboardComponent implements OnInit {
       this.pageViewsPerDay = data;
     });
 
-
+    this.googleAnalyticsService.getGeolocation().subscribe(data => {
+      this.userGeoData = data;
+    });
 
   }
 

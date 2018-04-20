@@ -22,6 +22,7 @@ import { GoogleAnalyticsService } from './services/google-analytics/google-analy
 import { UsersChartComponent } from './components/users-chart/users-chart.component';
 import { PageVisitsComponent } from './components/page-visits/page-visits.component';
 import { PageVisitsPerDayComponent } from './components/page-visits-per-day/page-visits-per-day.component';
+import { UserGeolocationChartComponent } from './components/user-geolocation-chart/user-geolocation-chart.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { PageVisitsPerDayComponent } from './components/page-visits-per-day/page
     TrustedStylePipe,
     UsersChartComponent,
     PageVisitsComponent,
-    PageVisitsPerDayComponent
+    PageVisitsPerDayComponent,
+    UserGeolocationChartComponent
   ],
   providers: [
     AuthGuard,
@@ -67,7 +69,8 @@ import { PageVisitsPerDayComponent } from './components/page-visits-per-day/page
     TrustedStylePipe,
     UsersChartComponent,
     PageVisitsComponent,
-    PageVisitsPerDayComponent
+    PageVisitsPerDayComponent,
+    UserGeolocationChartComponent
   ]
 })
 export class SharedModule { }

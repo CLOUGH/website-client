@@ -30,6 +30,7 @@
     "@types/clamp-js": "^0.7.2",
     "@types/d3": "^5.0.0",
     "@types/dropzone": "^5.0.2",
+    "@types/plotly.js": "^1.35.0",
     "@warrenclough/ckeditor5-build-classic": "^1.0.0-beta.7",
     "angular-froala-wysiwyg": "^2.7.6",
     "angular2-moment": "^1.8.0",
@@ -48,6 +49,7 @@
     "ngx-bootstrap": "^2.0.3",
     "ngx-dropzone-wrapper": "^5.3.5",
     "ngx-toastr": "^8.4.0",
+    "plotly.js": "^1.36.1",
     "rxjs": "^5.5.8",
     "wysiwyg-editor-node-sdk": "^2.3.4",
     "zone.js": "^0.8.25"

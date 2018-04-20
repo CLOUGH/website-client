@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
-import * as c3 from 'c3';
+import * as moment from 'moment';
+import * as Plotly from 'plotly.js';
 
 @Component({
   selector: 'app-page-visits-per-day',
@@ -22,22 +23,33 @@ export class PageVisitsPerDayComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+
   }
 
   generateChart() {
-    this.chart = c3.generate({
-      bindto: this.chartElement.nativeElement,
-      data: {
-        columns: [
-          ['data1', 300, 350, 300, 0, 0, 0],
-          ['data2', 130, 100, 140, 200, 150, 50]
-        ],
-        types: {
-          data1: 'area',
-          data2: 'area-spline'
-        }
-      }
+    Plotly.newPlot(this.chartElement.nativeElement, this.parseData(), {
+      title: 'Page Visits Per Day'
     });
+  }
+
+  parseData() {
+    const data = [];
+
+    this.pageViewsPerDay.reports[0].data.rows.forEach((row, rowIndex) => {
+      row.metrics[0].values.forEach((value, valueIndex) => {
+        if (!data[valueIndex]) {
+          data[valueIndex] = {
+            x: [],
+            y: [],
+            type: 'scatter',
+            name: this.pageViewsPerDay.reports[0].columnHeader.metricHeader.metricHeaderEntries[valueIndex].name
+          };
+        }
+        data[valueIndex].y.push(+value);
+        data[valueIndex].x.push(moment(row.dimensions[0], 'YYYYMMDD').format('YYYY-MM-DD'));
+      });
+    });
+    return data;
   }
 
 }

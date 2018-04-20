@@ -12,18 +12,18 @@
   </div>
 </div>
 
-<div class="mb-5">
+<div>
   <app-users-chart [data]="userData"></app-users-chart>
 </div>
 
-<h2 class="mb-5">Section title</h2>
 <div class="row">
-  <div class="col-md-6">
-    <app-page-visits [data]="pageData"></app-page-visits>
 
-  </div>
-
-  <div class="col-md-6">
+  <div class="col">
     <app-page-visits-per-day [data]="pageViewsPerDay"></app-page-visits-per-day>
   </div>
+  <div class="col">
+    <app-user-geolocation-chart [data]="userGeoData"></app-user-geolocation-chart>
+  </div>
 </div>
+
+<app-page-visits [data]="pageData"></app-page-visits>
