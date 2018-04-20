@@ -20,6 +20,8 @@ import { TokenStorageService } from './services/token-storage/token-storage.serv
 import { TrustedStylePipe } from './pipes/trusted-style.pipe';
 import { GoogleAnalyticsService } from './services/google-analytics/google-analytics.service';
 import { UsersChartComponent } from './components/users-chart/users-chart.component';
+import { PageVisitsComponent } from './components/page-visits/page-visits.component';
+import { PageVisitsPerDayComponent } from './components/page-visits-per-day/page-visits-per-day.component';
 
 
 @NgModule({
@@ -34,7 +36,9 @@ import { UsersChartComponent } from './components/users-chart/users-chart.compon
     CkeditorComponent,
     CkeditorComponent,
     TrustedStylePipe,
-    UsersChartComponent
+    UsersChartComponent,
+    PageVisitsComponent,
+    PageVisitsPerDayComponent
   ],
   providers: [
     AuthGuard,
@@ -61,7 +65,9 @@ import { UsersChartComponent } from './components/users-chart/users-chart.compon
     DialogModule,
     FontAwesomeModule,
     TrustedStylePipe,
-    UsersChartComponent
+    UsersChartComponent,
+    PageVisitsComponent,
+    PageVisitsPerDayComponent
   ]
 })
 export class SharedModule { }

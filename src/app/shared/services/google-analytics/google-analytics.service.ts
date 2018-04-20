@@ -14,4 +14,11 @@ export class GoogleAnalyticsService {
     return this.http.get(`${this.url}/users`)
       .pipe(map((response: any) => response));
   }
+
+  pageViews() {
+    return this.http.get(`${this.url}/page-views`);
+  }
+  pageViewPerDay() {
+    return this.http.get(`${this.url}/page-views-per-day`);
+  }
 }

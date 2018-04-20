@@ -10,6 +10,8 @@ import { GoogleAnalyticsService } from '../../shared/services/google-analytics/g
 })
 export class DashboardComponent implements OnInit {
   public userData: any;
+  public pageData: any;
+  public pageViewsPerDay: any;
 
   chart: any;
   @ViewChild('mainChart') mainChart: ElementRef;
@@ -23,35 +25,16 @@ export class DashboardComponent implements OnInit {
       this.userData = data;
     });
 
+    this.googleAnalyticsService.pageViews().subscribe(data => {
+      this.pageData = data;
+    });
 
-    // this.chart = new Chart(this.mainChart.nativeElement, {
-    //   type: 'line',
-    //   data: {
-    //     labels: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-    //     datasets: [{
-    //       data: [15339, 21345, 18483, 24003, 23489, 24092, 12034],
-    //       lineTension: 0,
-    //       backgroundColor: 'transparent',
-    //       borderColor: '#007bff',
-    //       borderWidth: 4,
-    //       pointBackgroundColor: '#007bff'
-    //     }]
-    //   },
-    //   options: {
-    //     responsive: true,
+    this.googleAnalyticsService.pageViewPerDay().subscribe(data => {
+      this.pageViewsPerDay = data;
+    });
 
-    //     scales: {
-    //       yAxes: [{
-    //         ticks: {
 
-    //         }
-    //       }]
-    //     },
-    //     legend: {
-    //       display: false,
-    //     }
-    //   }
-    // });
+
   }
 
 }

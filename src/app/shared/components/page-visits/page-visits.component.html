@@ -1,0 +1,16 @@
+<table class="table-responsive table-condensed table-striped table table-sm">
+  <thead>
+    <tr>
+      <th>Page</th>
+      <th>Visits</th>
+    </tr>
+  </thead>
+  <tbody *ngIf="pageData">
+    <tr *ngFor="let page of pageData.reports[0].data.rows">
+      <td>
+        <a [href]="page.dimensions[0]">{{page.dimensions[0]}}</a>
+      </td>
+      <td>{{page.metrics[0].values[0]}}</td>
+    </tr>
+  </tbody>
+</table>
